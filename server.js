@@ -1,17 +1,17 @@
 const express = require('express');
 require('./config/dataBase')
 require('dotenv').config();
+const cors = require('cors')
+
+const PORT = process.env.PORT || 7070
+const userRouter= require('./routes/userRouter')
 const productRouter = require('./routes/productRouter')
 
-const express = require('express');
-const userRouter= require('./routes/userRouter')
-const PORT = process.env.PORT || 7070
-
 const app = express()
-
+app.use(cors())
 app.use(express.json())
 
-app.use(productRouter)
+app.use('/api/v1', productRouter)
 app.use('/api/v1',userRouter)
 
 app.listen(PORT, ()=>{
