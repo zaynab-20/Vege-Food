@@ -6,7 +6,7 @@ const DB = process.env.MONGODB_URI
 mongoose.connect(DB)
 
 .then(()=>{
-    console.log('connection to dataBase established succefully');
+    console.log('connection to dataBase established successfully');
 })
 
 .catch((error)=>{

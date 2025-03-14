@@ -1,12 +1,13 @@
-const {register,verify,login,updateuser,deleteuser,forgotPassword,resetPassword}=require('../controllers/userController')
+const {verify,login,forgotPassword,resetPassword, resendVerificationEmail, register}=require('../controllers/userController');
 const router = require('express').Router();
 
-router.post('/register-user', register)
+
+router.post('/register', register);
 router.get('/verify-user/:token', verify);
-router.post('/login-user', login);
-router.put('/update-user/:userId',updateuser)
-router.delete('/delete-user/:userId',deleteuser);
+router.post('/resendverificationemail', resendVerificationEmail);
 router.post('/forgot-user-password', forgotPassword);
 router.post('/reset-user-password/:token', resetPassword);
+router.post('/login-user', login);
 
-module.exports=router;
+
+module.exports = router;
