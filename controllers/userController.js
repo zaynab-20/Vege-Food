@@ -2,7 +2,7 @@ const userModel = require('../models/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { verify_account } = require('../helper/account-verification')
-const  {emailSender}  = require("../middleware/nodemailer")
+const  {emailSender}  = require("../middleWare/nodemailer")
 
 exports.register = async (req, res) => {
     try {
