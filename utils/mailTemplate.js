@@ -1,4 +1,4 @@
-exports.verify_account = (link, firstName) => {
+exports.mailTemplate = (link, firstName) => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -92,7 +92,7 @@ exports.verify_account = (link, firstName) => {
   }
   
   
-  exports.reset_password = (link, firstName) => {
+  exports.resetpassword = (link, firstName) => {
     return `
     <!DOCTYPE html>
     <html lang="en">

@@ -1,4 +1,3 @@
-const userModel = require('../models/user')
 const productModel = require('../models/product')
 const cloudinary = require('../config/cloudinary')
 const fs = require('fs')
@@ -37,7 +36,7 @@ exports.createProduct = async (req, res) =>{
     }
 };
 
-exports.getAllProuduct = async (req, res) =>{
+exports.getAllProducts = async (req, res) =>{
     try {
 
         const AllProuduct = await productModel.find()
@@ -88,7 +87,7 @@ exports.updateProduct = async (req, res) =>{
     try {
         const {id} = req.params
 
-        const  {name, price, amount, quantity} = req.body
+        const  {productname, price, amount, description, quantity} = req.body
 
         const product  = await productModel.findById(id);
 
@@ -107,10 +106,11 @@ exports.updateProduct = async (req, res) =>{
 
 
         const data = {
-            name,
+            productname,
             price,
             amount,
             quantity,
+            description,
             productImage: {
                 imageUrl: result.secure_url,
                 publicId: result.public_id
