@@ -28,8 +28,7 @@ exports.createProduct = async (req, res) =>{
             data: product
         })
     } catch (error) {
-        console.log(error.message);
-        
+        console.log(error.message)        
         res.status(500).json({
             message: 'internal server error '
         })
@@ -87,7 +86,7 @@ exports.updateProduct = async (req, res) =>{
     try {
         const {id} = req.params
 
-        const  {productname, price, amount, description, quantity} = req.body
+        const  {name, price, description, quantity} = req.body
 
         const product  = await productModel.findById(id);
 
@@ -106,9 +105,8 @@ exports.updateProduct = async (req, res) =>{
 
 
         const data = {
-            productname,
+            name,
             price,
-            amount,
             quantity,
             description,
             productImage: {

@@ -2,10 +2,6 @@ const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
     
-    userId: [{
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Users'
-    }],
     name: {
         type: String,
         require: true
@@ -15,7 +11,7 @@ const productSchema = new mongoose.Schema({
         require: true
     },
     quantity: {
-        type: Number,
+        type: String,
         require: true
     },
     description: {
