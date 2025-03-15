@@ -103,7 +103,7 @@ exports.verify = async (req, res) => {
 exports.resendVerificationEmail = async (req, res) => {
   try {
     const validated = await validate(req.body, verificationEmailSchema);
-    const { email } = req.body;
+    const { email } = validated;
 
     if (!email) {
       return res.status(400).json({
@@ -119,7 +119,7 @@ exports.resendVerificationEmail = async (req, res) => {
       });
     }
 
-    const token = await jwt.sign({ userId: user_id }, process.env.JWT_SECRET, {
+    const token = await jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
 
@@ -208,7 +208,7 @@ exports.forgotPassword = async (req, res) => {
     const validated = await validate(req.body, forgotPasswordSchema);
     const { email } = validated;
 
-    const user = await userModel.findOne({ email: email.toLowercCase() });
+    const user = await userModel.findOne({ email: email.toLowerCase() });
 
     if (!user) {
       return res.status(404).json({
@@ -225,12 +225,12 @@ exports.forgotPassword = async (req, res) => {
     const firstName = user.fullName.split(" ")[0];
 
     const mailDetails = {
-      subject: "RESET PASSWORD",
+      subject: "FORGOT PASSWORD",
       email: user.email,
-      html: reset_password(link, firstName),
+      html: resetpassword(link, firstName),
     };
 
-    await emailSender(mailDetails);
+    await sendEmail(mailDetails);
     return res.status(200).json({
       message: "Link has been sent to email address",
     });

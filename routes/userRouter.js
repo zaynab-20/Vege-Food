@@ -3,11 +3,11 @@ const router = require('express').Router();
 
 
 router.post('/register', register);
-router.get('/verify-user/:token', verify);
+router.get('/verify/:token', verify);
 router.post('/resendverificationemail', resendVerificationEmail);
-router.post('/forgot-user-password', forgotPassword);
-router.post('/reset-user-password/:token', resetPassword);
-router.post('/login-user', login);
+router.post('/forgotpassword', forgotPassword);
+router.post('/resetpassword/:token', resetPassword);
+router.post('/login', login);
 
 
 module.exports = router;
