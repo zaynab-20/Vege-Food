@@ -32,7 +32,7 @@ exports.register = async (req, res) => {
       expiresIn: "1day",
     });
 
-    const link = `${req.protocol}://${req.get("host")}/api/v1/verify-user/${token}`;
+    const link = `${req.protocol}://${req.get("host")}/api/v1/verify/${token}`;
 
     const firstName = user.fullName.split(" ")[0];
 
