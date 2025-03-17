@@ -32,7 +32,8 @@ exports.register = async (req, res) => {
       expiresIn: "1day",
     });
 
-    const link = `${req.protocol}://${req.get("host")}/api/v1/verify/${token}`;
+    const link = `https://vegefoods-freshpick-app.vercel.app/verify-email/${token}`;
+    // const link = `http://localhost:5173/verify-email/${token}`
 
     const firstName = user.fullName.split(" ")[0];
 
