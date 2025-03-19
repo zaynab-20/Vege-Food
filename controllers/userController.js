@@ -316,3 +316,63 @@ exports.getOneUser = async (req, res) =>{
       })    
     }
 };
+
+
+exports.updateUser = async (req, res) =>{
+  try {
+    const {id} = req.params
+
+    const user = await userModel.findById(id)
+    if (!user) {
+      return res.status(404).json({
+        message: 'user not found'
+      })
+    }
+    const {fullName, email, username} = req.body
+    
+    const data = {
+      fullName, 
+      email, 
+      username
+    }
+    const updatedUser = await userModel.findByIdAndUpdate(id, data, {new: true})
+    res.status(200).json({
+      message: 'User has been updated successfully ', 
+      data:updatedUser
+    })
+
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({
+      message: 'internal server error'
+    })
+  }
+}
+exports.updateProduct = async (req, res) => {
+  try {
+      const {id} = req.params
+
+      const product = await productModel.findById(id)
+      if(!product) {
+          return res.status(404).json({message: 'product not found'})
+      }
+
+      const {productName,productQuantity,ProductPrice} = req.body
+
+      const data = {
+          productName,
+          productQuantity,
+          ProductPrice
+      }
+      const updatedProduct = await productModel.findByIdAndUpdate(id , data, {new: true})
+
+      res.status(200).json({message: `product has been updated successfully`, data: updatedProduct})
+
+
+  } catch (error) {
+      console.log(error.message)
+      res.status(500).json({message: 'internal server error'})
+  }
+}
+
+
