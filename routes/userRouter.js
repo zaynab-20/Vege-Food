@@ -10,6 +10,4 @@ router.post('/resetpassword/:token', resetPassword);
 router.post('/login', login);
 router.get('/getOneUser/:id', getOneUser)
 
-
-
 module.exports = router;
