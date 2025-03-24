@@ -8,13 +8,18 @@ const cors = require("cors");
 const PORT = process.env.PORT || 7070;
 const userRouter = require("./routes/userRouter");
 const productRouter = require("./routes/productRouter");
+<<<<<<< HEAD
 const paymentRouter = require("./routes/paymentRouter")
 
+=======
+const paystackRouter = require('./routes/paymentRouter')
+>>>>>>> 411ca44ae3c1d0915fab3cf0caccad5c3e8e8056
 app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1", productRouter);
 app.use("/api/v1", userRouter);
+<<<<<<< HEAD
 app.use("/api/v1", paymentRouter);
 
 const swaggerJsdoc = require("swagger-jsdoc");
@@ -61,6 +66,9 @@ app.use("/documentation", swagger_UI.serve, swagger_UI.setup(openapiSpecificatio
 //   }
 // })
 
+
+
+app.use('/api/v1',paystackRouter)
 
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);

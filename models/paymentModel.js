@@ -1,44 +1,29 @@
-const { required } = require("joi")
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
-const paymentSchema = new mongoose.Schema({
-    user: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "Users",
-        required: true
-    },
+const paystackSchema = new mongoose.Schema({
+  email: {
+    type:String,
+    require: true
+  },
+  amount: {
+    type:Number,
+    require: true
+  },
+  reference: {
+    type:String,
+    require: true
+  },
+  status: {
+    type:String,
+    enum: ['Pending','Success','Failed'],
+    default: 'Pending'
+  },
+  paymentDate: {
+    type:String,
+    require:true
+  },
+},{timestamps:true});
 
-    items: [{
-        productId: {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: "Products",
-            required: true
-        },
-        quantity: {
-            type: Number,
-            required: true
-        }
-    }],
-    email: {
-        type: String,
-        required: true
-    },
-    amount: {
-        type: Number,
-        required: true
-    },
-    status: {
-        type: String,                                                                                                                                                                                                                                                           
-        enum: ["Pending", "Successful", "Declined"],
-        required: true,
-        default: "Pending"
-    },
-    reference: {
-        type: String,
-        required: true
-    }
-}, {timestamps: true});
+const paystackModel = mongoose.model('Paystacks',paystackSchema);
 
-const paymentModel = mongoose.model("Payment", paymentSchema);
-
-module.exports = paymentModel
+module.exports = paystackModel;
