@@ -1,7 +1,7 @@
+const router = require('express').Router()
 const { initializePayment, verifyPayment } = require('../controllers/paymentController')
 
-const router = require('express').Router()
-router.post('/initialize',initializePayment)
+router.post('/initialize/:userId',initializePayment)
 router.get('/verify',verifyPayment)
 
 module.exports = router;

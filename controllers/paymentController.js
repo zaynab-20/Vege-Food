@@ -1,5 +1,5 @@
 const cartModel = require("../models/cart")
-const paymentModel = require("../models/payment")
+const paymentModel = require("../models/paymentModel")
 const apiUrl = 'https://api.korapay.com/merchant/api/v1/charges/initialize'
 const userModel = require("../models/user")
 const axios = require("axios")
