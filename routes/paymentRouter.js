@@ -1,4 +1,4 @@
-const { initializePayment, verifyPayment } = require('../controllers/paymentController')
+const { initializePayment, verifyPayment } = require('../controllers/paystackController')
 
 const router = require('express').Router()
 router.post('/initialize',initializePayment)
